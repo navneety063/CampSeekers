@@ -3,7 +3,7 @@ const User = require('../models/user');
 module.exports.renderNewUser = (req, res) => {
     res.render('users/register');
 };
-module.exports.createNewUser = async (req, res,next) => {
+module.exports.createNewUser = async (req, res) => {
     try {
         const { email, username, password } = req.body;
         const user = new User({ email, username });
@@ -13,9 +13,9 @@ module.exports.createNewUser = async (req, res,next) => {
             req.flash('success', 'Welcome');
             res.redirect('/campgrounds');
         })
-        next();
     } catch (e) {
-        next(e);
+        req.flash('error', e.message);
+        res.redirect('/register');
     }
 };
 module.exports.renderLogin = (req, res) => {
