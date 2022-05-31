@@ -18,7 +18,7 @@ const reviews = require('./routes/reviews');
 const User=require('./models/user');
 const mongoSanitize=require('express-mongo-sanitize');
 const MongoDBStore=require("connect-mongo");
-const dbUrl=process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const dbUrl=process.env.DB_URL || 'mongodb://localhost:27017/camp-seekers';
 
 mongoose.connect(dbUrl);
 
